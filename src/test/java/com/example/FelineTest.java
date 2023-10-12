@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class FelineTest {
 
@@ -13,7 +13,7 @@ public class FelineTest {
         Feline feline = new Feline();
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
 
-        assertEquals(feline.eatMeat(),expectedFood);
+        assertEquals(expectedFood, feline.eatMeat());
     }
 
     @Test
@@ -21,7 +21,7 @@ public class FelineTest {
         Feline feline = new Feline();
         String expectedFamily = "Кошачьи";
 
-        assertEquals(feline.getFamily(),expectedFamily);
+        assertEquals(expectedFamily, feline.getFamily());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class FelineTest {
         Feline feline = new Feline();
         int expectedKittensCount = 1;
 
-        assertEquals(feline.getKittens(),expectedKittensCount);
+        assertEquals(expectedKittensCount, feline.getKittens());
     }
 
     @Test
@@ -37,6 +37,6 @@ public class FelineTest {
         Feline feline = new Feline();
         int expectedKittensCount = 3;
 
-        assertEquals(feline.getKittens(3),expectedKittensCount);
+        assertEquals(expectedKittensCount, feline.getKittens(3));
     }
 }

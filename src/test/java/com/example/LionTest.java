@@ -1,8 +1,8 @@
 package com.example;
 
-import org.junit.Test;
-import org.junit.Before;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mock;
@@ -15,19 +15,19 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class LionTest {
-    String lionSex;
-    boolean expectedManeValue;
     String SEX_EXCEPTION_THROW = "Недопустимое значение";
-
     @Mock
     Feline feline;
+    private final String lionSex;
+    private final boolean expectedManeValue;
 
     public LionTest(String lionSex, boolean expectedManeValue) {
         this.lionSex = lionSex;
         this.expectedManeValue = expectedManeValue;
     }
+
     @Parameterized.Parameters
-    public static Object[][] getTestValues(){
+    public static Object[][] getTestValues() {
         return new Object[][]{
                 {"Самец", true},
                 {"Самка", false}
@@ -35,13 +35,14 @@ public class LionTest {
     }
 
     @Before
-    public void init(){
+    public void init() {
         MockitoAnnotations.initMocks(this);
     }
+
     @Test
     public void checkDoesHaveMane() throws Exception {
         Lion lion = new Lion(lionSex, feline);
-        assertEquals(expectedManeValue,lion.doesHaveMane());
+        assertEquals(expectedManeValue, lion.doesHaveMane());
     }
 
     @Test
@@ -54,7 +55,7 @@ public class LionTest {
         Lion lion = new Lion(lionSex, feline);
         Mockito.when(feline.getKittens()).thenReturn(1);
         int expectedKittensCount = 1;
-        assertEquals(expectedKittensCount,lion.getKittens());
+        assertEquals(expectedKittensCount, lion.getKittens());
     }
 
     @Test
@@ -62,6 +63,6 @@ public class LionTest {
         Lion lion = new Lion(lionSex, feline);
         Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
-        assertEquals(expectedFood,lion.getFood());
+        assertEquals(expectedFood, lion.getFood());
     }
 }
